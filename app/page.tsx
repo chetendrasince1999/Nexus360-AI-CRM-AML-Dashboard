@@ -160,6 +160,67 @@ function AnimatedCloudBackground({ darkMode }: { darkMode: boolean }) {
   return (
     <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden">
       <style>{`
+
+        html {
+          scroll-behavior: smooth;
+        }
+
+        * {
+          scroll-behavior: smooth;
+        }
+
+        button, a {
+          transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease, background-color 220ms ease, color 220ms ease, filter 220ms ease;
+        }
+
+        button {
+          position: relative;
+          overflow: hidden;
+          will-change: transform;
+        }
+
+        button:hover {
+          transform: translateY(-2px) scale(1.025);
+          filter: saturate(1.12);
+        }
+
+        button:active {
+          transform: translateY(0) scale(0.96);
+        }
+
+        button::after {
+          content: "";
+          position: absolute;
+          inset: 0;
+          pointer-events: none;
+          border-radius: inherit;
+          background: linear-gradient(120deg, transparent 0%, rgba(255,255,255,0.22) 48%, transparent 60%);
+          transform: translateX(-130%);
+          transition: transform 650ms ease;
+        }
+
+        button:hover::after {
+          transform: translateX(130%);
+        }
+
+        @keyframes softReveal {
+          0% { opacity: 0; transform: translateY(18px); }
+          100% { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes premiumPulse {
+          0%, 100% { box-shadow: 0 0 0 rgba(34,211,238,0); }
+          50% { box-shadow: 0 0 28px rgba(34,211,238,0.22); }
+        }
+
+        .premium-card {
+          animation: softReveal 700ms ease both;
+        }
+
+        .premium-glow {
+          animation: premiumPulse 4s ease-in-out infinite;
+        }
+
         @keyframes cloudMoveLeft {
           0% { transform: translate3d(-45vw, 0, 0) scale(0.95); }
           100% { transform: translate3d(120vw, -3vh, 0) scale(1.05); }
@@ -389,7 +450,7 @@ export default function Home() {
 <html>
 <head>
   <meta charset="UTF-8" />
-  <title>Nexus360 V8 Premium Executive Report</title>
+  <title>Nexus360 Premium Executive Report</title>
   <style>
     * { box-sizing: border-box; }
     body {
@@ -437,18 +498,18 @@ export default function Home() {
 <body>
   <div class="container">
     <div class="cover">
-      <h1>🚀 Nexus360 V8 Cloud Edition</h1>
+      <h1>🚀 Nexus360 Executive Intelligence Suite</h1>
       <p class="subtitle">
-        AI Powered CRM, AML, Customer Success & Executive Risk Intelligence Platform.<br/>
+        AI-Powered CRM, AML Monitoring, Customer Intelligence and Executive Reporting Suite.<br/>
         Built as a recruiter-ready SaaS portfolio project by <b>Chetendra Singh Jadoun</b>.
       </p>
     </div>
 
     <h2>Executive Summary</h2>
     <p class="subtitle">
-      Nexus360 V8 is a premium interactive dashboard combining CRM analytics, AML/KYC monitoring,
+      Nexus360 is a premium interactive intelligence suite combining CRM analytics, AML/KYC monitoring,
       suspicious transaction detection, case management, customer 360 profiles, AI copilot workflows,
-      scenario simulation, global risk mapping, audit trail, system health monitoring and live animated cloud UI.
+      scenario simulation, global risk mapping, audit trail, system health monitoring and executive reporting.
     </p>
 
     <h2>Key Metrics</h2>
@@ -522,7 +583,7 @@ export default function Home() {
     </p>
 
     <div class="footer">
-      Generated from Nexus360 V8 Cloud Edition • Built by Chetendra Singh Jadoun
+      Generated from Nexus360 Executive Intelligence Suite • Built by Chetendra Singh Jadoun
     </div>
   </div>
 </body>
@@ -533,7 +594,7 @@ export default function Home() {
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
     a.href = url;
-    a.download = "Nexus360-V8-Premium-Executive-Report.html";
+    a.download = "Nexus360-Premium-Executive-Report.html";
     a.click();
     URL.revokeObjectURL(url);
   };
@@ -554,8 +615,8 @@ export default function Home() {
 
         <motion.div initial={{ opacity: 0, y: 35 }} animate={{ opacity: 1, y: 0 }} className="relative z-10 w-full max-w-md rounded-[2rem] border border-white/10 bg-white/10 p-8 shadow-2xl backdrop-blur-2xl">
           <div className="mb-8 text-center">
-            <h1 className="text-4xl font-black text-cyan-300">🚀 Nexus360 V8</h1>
-            <p className="mt-3 text-slate-300">Cloud Edition Recruiter Demo Login</p>
+            <h1 className="text-4xl font-black text-cyan-300">🚀 Nexus360</h1>
+            <p className="mt-3 text-slate-300">Executive Intelligence Suite Demo Login</p>
           </div>
 
           <div className="space-y-4">
@@ -569,7 +630,7 @@ export default function Home() {
             </div>
 
             <button onClick={() => setLoggedIn(true)} className="w-full rounded-2xl bg-cyan-400 px-6 py-4 font-black text-black transition hover:scale-[1.02]">
-              Enter Cloud Edition Dashboard
+              Enter Executive Intelligence Suite
             </button>
           </div>
 
@@ -591,12 +652,14 @@ export default function Home() {
       <nav className={darkMode ? "sticky top-0 z-50 border-b border-white/10 bg-black/40 backdrop-blur-2xl" : "sticky top-0 z-50 border-b border-slate-200 bg-white/80 backdrop-blur-2xl"}>
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-6 py-5 md:px-14">
           <div>
-            <h1 className="text-2xl font-black text-cyan-400">🚀 Nexus360 V8</h1>
-            <p className={darkMode ? "text-xs text-slate-400" : "text-xs text-slate-600"}>Cloud Edition AI Enterprise Intelligence Platform</p>
+            <h1 className="text-2xl font-black tracking-tight text-cyan-400">🚀 Nexus360</h1>
+            <p className={darkMode ? "text-xs font-semibold text-slate-400" : "text-xs font-semibold text-slate-600"}>Executive Intelligence Suite</p>
+            <p className="hidden text-[10px] font-bold uppercase tracking-[0.18em] text-cyan-400/70 md:block">CRM • AML • AI Copilot • Reporting</p>
           </div>
 
           <div className="hidden gap-6 text-sm font-bold lg:flex">
             <a href="#war-room" className="hover:text-cyan-400">War Room</a>
+            <a href="#ai-command" className="hover:text-cyan-400">AI Copilot</a>
             <a href="#dashboard" className="hover:text-cyan-400">Dashboard</a>
             <a href="#command" className="hover:text-cyan-400">Command</a>
             <a href="#simulator" className="hover:text-cyan-400">Simulator</a>
@@ -635,63 +698,16 @@ export default function Home() {
         </div>
       )}
 
-      <aside className="fixed right-6 top-36 z-40 hidden w-[340px] rounded-[2rem] border border-cyan-400/20 bg-[#020617]/90 p-6 text-white shadow-2xl backdrop-blur-2xl xl:block">
-        <p className="text-xs font-bold uppercase tracking-[0.25em] text-cyan-300">AI Assistant</p>
-        <h3 className="mt-3 text-2xl font-black">Risk Copilot</h3>
-
-        <div className="mt-5 flex flex-wrap gap-2">
-          {[
-            ["risk", "Risk"],
-            ["churn", "Churn"],
-            ["action", "Action"],
-          ].map(([key, label]) => (
-            <button key={key} onClick={() => setSelectedInsight(key)} className={selectedInsight === key ? "rounded-full bg-cyan-400 px-4 py-2 text-xs font-bold text-black" : "rounded-full border border-white/20 bg-white/10 px-4 py-2 text-xs font-bold text-white"}>
-              {label}
-            </button>
-          ))}
-        </div>
-
-        <div className="mt-5 rounded-3xl border border-white/10 bg-white/10 p-4">
-          <p className="text-sm leading-relaxed text-slate-200">{aiInsight}</p>
-        </div>
-
-        <div className="mt-5 rounded-3xl border border-white/10 bg-black/20 p-4">
-          <p className="text-xs font-bold uppercase tracking-[0.2em] text-purple-300">AI Chat</p>
-          <div className="mt-3 max-h-44 space-y-2 overflow-y-auto pr-1">
-            {chatMessages.map((msg, index) => (
-              <div key={`${msg.from}-${index}`} className={msg.from === "ai" ? "rounded-2xl bg-cyan-400/10 p-3 text-xs text-slate-200" : "rounded-2xl bg-purple-400/10 p-3 text-xs text-slate-200"}>
-                <span className="font-bold text-cyan-300">{msg.from === "ai" ? "AI" : "You"}:</span> {msg.text}
-              </div>
-            ))}
-          </div>
-          <div className="mt-3 flex gap-2">
-            <input value={chatInput} onChange={(e) => setChatInput(e.target.value)} onKeyDown={(e) => e.key === "Enter" && sendChat()} placeholder="Ask risk..." className="min-w-0 flex-1 rounded-xl bg-white/10 px-3 py-2 text-xs outline-none" />
-            <button onClick={sendChat} className="rounded-xl bg-cyan-400 px-3 py-2 text-xs font-black text-black">Send</button>
-          </div>
-        </div>
-
-        <div className="mt-5 grid grid-cols-2 gap-3">
-          <div className="rounded-2xl bg-red-500/10 p-4">
-            <p className="text-xs text-slate-400">Priority</p>
-            <p className="mt-1 font-black text-red-300">High</p>
-          </div>
-          <div className="rounded-2xl bg-cyan-500/10 p-4">
-            <p className="text-xs text-slate-400">Playbook</p>
-            <p className="mt-1 font-black text-cyan-300">{completedSteps}/4 Done</p>
-          </div>
-        </div>
-      </aside>
-
-      <section className="relative z-10 mx-auto max-w-7xl px-6 py-24 md:px-14 xl:pr-[390px]">
+      <section className="relative z-10 mx-auto max-w-7xl px-6 py-24 md:px-14">
         <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }}>
           <div className="mb-8 inline-flex rounded-full border border-cyan-400/30 bg-cyan-400/10 px-5 py-3 text-sm font-bold text-cyan-400">
-            🏆 V8 Cloud Edition SaaS Demo • CRM + AML + AI Copilot + Simulation
+            🏆 Executive Intelligence Suite • CRM + AML + AI Copilot + Reporting
           </div>
           <h2 className="max-w-6xl text-5xl font-black leading-tight drop-shadow-[0_8px_30px_rgba(0,0,0,0.95)] md:text-7xl">
-            AI Powered CRM, AML & Executive Risk Command Center.
+            Executive Risk Intelligence for CRM, AML & Customer Decisions.
           </h2>
           <p className={`mt-8 max-w-3xl text-xl font-semibold leading-relaxed drop-shadow-[0_4px_18px_rgba(0,0,0,0.95)] ${muted}`}>
-            A premium portfolio product with command search, customer 360, role-based views, AI chat, kanban cases, risk simulation, audit trail and board reporting.
+            A premium SaaS-style portfolio project with command search, customer 360, AI chat, case workflows, risk simulation and boardroom reporting.
           </p>
 
           <div className="mt-10 grid gap-4 md:grid-cols-4">
@@ -712,8 +728,135 @@ export default function Home() {
       </section>
 
 
-      <section id="war-room" className="relative z-10 mx-auto max-w-7xl px-6 py-12 md:px-14 xl:pr-[390px]">
-        <div className={`rounded-[2rem] p-8 ${cardClass}`}>
+
+      <section id="ai-command" className="relative z-10 mx-auto max-w-7xl px-6 py-12 md:px-14">
+        <motion.div
+          initial={{ opacity: 0, y: 28 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="overflow-hidden rounded-[2.5rem] border border-cyan-400/25 bg-[#020617]/82 p-6 text-white shadow-[0_0_80px_rgba(34,211,238,0.18)] backdrop-blur-2xl md:p-8"
+        >
+          <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_top_left,rgba(34,211,238,0.20),transparent_32%),radial-gradient(circle_at_bottom_right,rgba(168,85,247,0.20),transparent_35%)]" />
+          <div className="relative grid gap-8 lg:grid-cols-[1.15fr_0.85fr]">
+            <div>
+              <div className="inline-flex rounded-full border border-cyan-400/30 bg-cyan-400/10 px-5 py-3 text-sm font-black uppercase tracking-[0.25em] text-cyan-300">
+                AI Command Center
+              </div>
+              <h2 className="mt-6 text-4xl font-black leading-tight md:text-6xl">
+                Risk Copilot that turns data into decisions.
+              </h2>
+              <p className="mt-5 max-w-3xl text-lg leading-relaxed text-slate-300">
+                This AI layer summarizes risk, detects churn signals, recommends next actions and creates an executive-ready brief for compliance, CRM and leadership teams.
+              </p>
+
+              <div className="mt-7 flex flex-wrap gap-3">
+                {[
+                  ["risk", "Risk Summary", "🔴"],
+                  ["churn", "Churn Alert", "🟡"],
+                  ["action", "Action Plan", "🟢"],
+                ].map(([key, label, icon]) => (
+                  <button
+                    key={key}
+                    onClick={() => setSelectedInsight(key)}
+                    className={
+                      selectedInsight === key
+                        ? "rounded-full bg-cyan-400 px-5 py-3 text-sm font-black text-black shadow-[0_0_25px_rgba(34,211,238,0.45)]"
+                        : "rounded-full border border-white/15 bg-white/10 px-5 py-3 text-sm font-bold text-white transition hover:border-cyan-400/50 hover:bg-cyan-400/10"
+                    }
+                  >
+                    {icon} {label}
+                  </button>
+                ))}
+              </div>
+
+              <motion.div
+                key={selectedInsight}
+                initial={{ opacity: 0, y: 18 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="mt-7 rounded-[2rem] border border-white/10 bg-white/10 p-6 shadow-2xl"
+              >
+                <p className="text-xs font-black uppercase tracking-[0.3em] text-cyan-300">AI Executive Insight</p>
+                <p className="mt-4 text-lg leading-relaxed text-slate-100">{aiInsight}</p>
+              </motion.div>
+
+              <div className="mt-7 grid gap-4 md:grid-cols-4">
+                {[
+                  ["Revenue at Risk", "$" + revenueAtRisk.toLocaleString(), "text-red-300"],
+                  ["Top Account", "Nova Finance", "text-yellow-300"],
+                  ["Confidence", "94%", "text-green-300"],
+                  ["Playbook", completedSteps + "/4", "text-cyan-300"],
+                ].map(([label, value, color]) => (
+                  <motion.div whileHover={{ y: -5 }} key={label} className="rounded-3xl border border-white/10 bg-black/25 p-5">
+                    <p className="text-xs text-slate-400">{label}</p>
+                    <p className={`mt-2 text-2xl font-black ${color}`}>{value}</p>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+
+            <div className="rounded-[2rem] border border-purple-400/20 bg-black/35 p-5 shadow-[inset_0_0_40px_rgba(168,85,247,0.08)]">
+              <div className="flex items-center justify-between gap-4">
+                <div>
+                  <p className="text-xs font-black uppercase tracking-[0.3em] text-purple-300">Live AI Chat</p>
+                  <h3 className="mt-2 text-3xl font-black">Ask Nexus AI</h3>
+                </div>
+                <div className="flex items-center gap-2 rounded-full border border-green-400/30 bg-green-400/10 px-3 py-2 text-xs font-bold text-green-300">
+                  <span className="relative flex h-2 w-2">
+                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75" />
+                    <span className="relative inline-flex h-2 w-2 rounded-full bg-green-400" />
+                  </span>
+                  Online
+                </div>
+              </div>
+
+              <div className="mt-5 h-[360px] overflow-y-auto rounded-[1.5rem] border border-white/10 bg-[#020617]/70 p-4">
+                <div className="space-y-3">
+                  {chatMessages.map((msg, index) => (
+                    <motion.div
+                      key={`${msg.from}-${index}`}
+                      initial={{ opacity: 0, x: msg.from === "ai" ? -18 : 18, scale: 0.96 }}
+                      animate={{ opacity: 1, x: 0, scale: 1 }}
+                      transition={{ duration: 0.28 }}
+                      className={msg.from === "ai" ? "flex justify-start" : "flex justify-end"}
+                    >
+                      <div className={msg.from === "ai" ? "max-w-[88%] rounded-3xl rounded-tl-sm border border-cyan-400/20 bg-cyan-400/10 p-4 text-sm text-slate-100 shadow-[0_0_25px_rgba(34,211,238,0.08)]" : "max-w-[88%] rounded-3xl rounded-tr-sm border border-purple-400/20 bg-purple-400/15 p-4 text-sm text-slate-100 shadow-[0_0_25px_rgba(168,85,247,0.08)]"}>
+                        <p className={msg.from === "ai" ? "mb-1 text-xs font-black uppercase tracking-[0.2em] text-cyan-300" : "mb-1 text-xs font-black uppercase tracking-[0.2em] text-purple-300"}>
+                          {msg.from === "ai" ? "Nexus AI" : "You"}
+                        </p>
+                        {msg.text}
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="mt-4 grid gap-3 sm:grid-cols-[1fr_auto]">
+                <input
+                  value={chatInput}
+                  onChange={(e) => setChatInput(e.target.value)}
+                  onKeyDown={(e) => e.key === "Enter" && sendChat()}
+                  placeholder="Ask: highest risk, churn, AML summary..."
+                  className="rounded-2xl border border-white/10 bg-white/10 px-5 py-4 text-sm text-white outline-none transition placeholder:text-slate-500 focus:border-cyan-400/60 focus:bg-cyan-400/10"
+                />
+                <button onClick={sendChat} className="rounded-2xl bg-cyan-400 px-6 py-4 font-black text-black transition hover:scale-[1.03] hover:shadow-[0_0_30px_rgba(34,211,238,0.45)]">
+                  Send →
+                </button>
+              </div>
+
+              <div className="mt-4 flex flex-wrap gap-2">
+                {["highest risk", "churn summary", "AML action", "revenue forecast"].map((prompt) => (
+                  <button key={prompt} onClick={() => setChatInput(prompt)} className="rounded-full border border-white/10 bg-white/5 px-3 py-2 text-xs font-bold text-slate-300 transition hover:border-cyan-400/40 hover:text-cyan-300">
+                    {prompt}
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
+        </motion.div>
+      </section>
+
+      <section id="war-room" className="relative z-10 mx-auto max-w-7xl px-6 py-12 md:px-14">
+        <div className={`premium-card rounded-[2rem] p-8 ${cardClass}`}>
           <div className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
             <div>
               <p className="text-sm uppercase tracking-[0.3em] text-red-400">Executive War Room</p>
@@ -741,7 +884,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="recruiter" className="relative z-10 mx-auto max-w-7xl px-6 py-12 md:px-14 xl:pr-[390px]">
+      <section id="recruiter" className="relative z-10 mx-auto max-w-7xl px-6 py-12 md:px-14">
         <div className={`rounded-[2rem] p-8 ${cardClass}`}>
           <p className="text-sm uppercase tracking-[0.3em] text-green-400">Hiring Manager Mode</p>
           <h2 className="mt-3 text-5xl font-black">Why This Project Should Get an Interview</h2>
@@ -773,7 +916,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="global-risk" className="relative z-10 mx-auto max-w-7xl px-6 py-12 md:px-14 xl:pr-[390px]">
+      <section id="global-risk" className="relative z-10 mx-auto max-w-7xl px-6 py-12 md:px-14">
         <div className={`rounded-[2rem] p-8 ${cardClass}`}>
           <p className="text-sm uppercase tracking-[0.3em] text-cyan-400">Global Risk Map</p>
           <h2 className="mt-3 text-5xl font-black">Regional Exposure Intelligence</h2>
@@ -806,7 +949,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="investigation" className="relative z-10 mx-auto max-w-7xl px-6 py-12 md:px-14 xl:pr-[390px]">
+      <section id="investigation" className="relative z-10 mx-auto max-w-7xl px-6 py-12 md:px-14">
         <div className={`rounded-[2rem] p-8 ${cardClass}`}>
           <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
             <div>
@@ -846,7 +989,7 @@ export default function Home() {
       </section>
 
 
-      <section id="command" className="relative z-10 mx-auto max-w-7xl px-6 py-12 md:px-14 xl:pr-[390px]">
+      <section id="command" className="relative z-10 mx-auto max-w-7xl px-6 py-12 md:px-14">
         <div className={`rounded-[2rem] p-7 ${cardClass}`}>
           <div className="flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
             <div>
@@ -870,7 +1013,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="relative z-10 mx-auto max-w-7xl px-6 py-12 md:px-14 xl:pr-[390px]">
+      <section className="relative z-10 mx-auto max-w-7xl px-6 py-12 md:px-14">
         <div className="grid gap-8 lg:grid-cols-2">
           <div className={`rounded-[2rem] p-7 ${cardClass}`}>
             <p className="text-sm uppercase tracking-[0.3em] text-purple-400">Role Switcher</p>
@@ -900,7 +1043,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="simulator" className="relative z-10 mx-auto max-w-7xl px-6 py-12 md:px-14 xl:pr-[390px]">
+      <section id="simulator" className="relative z-10 mx-auto max-w-7xl px-6 py-12 md:px-14">
         <div className={`rounded-[2rem] p-7 ${cardClass}`}>
           <p className="text-sm uppercase tracking-[0.3em] text-green-400">Scenario Simulator</p>
           <h2 className="mt-3 text-4xl font-black">What-If Business Impact</h2>
@@ -935,7 +1078,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="playbook" className="relative z-10 mx-auto max-w-7xl px-6 py-12 md:px-14 xl:pr-[390px]">
+      <section id="playbook" className="relative z-10 mx-auto max-w-7xl px-6 py-12 md:px-14">
         <div className={`rounded-[2rem] p-7 ${cardClass}`}>
           <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
             <div>
@@ -962,7 +1105,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="dashboard" className="relative z-10 mx-auto max-w-7xl px-6 py-20 md:px-14 xl:pr-[390px]">
+      <section id="dashboard" className="relative z-10 mx-auto max-w-7xl px-6 py-20 md:px-14">
         <p className="text-sm uppercase tracking-[0.3em] text-cyan-400">Executive Dashboard</p>
         <h2 className="mt-4 text-5xl font-black">Business Performance Overview</h2>
 
@@ -1028,7 +1171,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="crm" className="relative z-10 mx-auto max-w-7xl px-6 py-20 md:px-14 xl:pr-[390px]">
+      <section id="crm" className="relative z-10 mx-auto max-w-7xl px-6 py-20 md:px-14">
         <p className="text-sm uppercase tracking-[0.3em] text-purple-400">CRM Intelligence</p>
         <h2 className="mt-4 text-5xl font-black">Customer Success Command Center</h2>
 
@@ -1069,7 +1212,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="aml" className="relative z-10 mx-auto max-w-7xl px-6 py-20 md:px-14 xl:pr-[390px]">
+      <section id="aml" className="relative z-10 mx-auto max-w-7xl px-6 py-20 md:px-14">
         <p className="text-sm uppercase tracking-[0.3em] text-red-400">AML / KYC Monitoring</p>
         <h2 className="mt-4 text-5xl font-black">Risk Screening Matrix</h2>
 
@@ -1124,7 +1267,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="kanban" className="relative z-10 mx-auto max-w-7xl px-6 py-20 md:px-14 xl:pr-[390px]">
+      <section id="kanban" className="relative z-10 mx-auto max-w-7xl px-6 py-20 md:px-14">
         <p className="text-sm uppercase tracking-[0.3em] text-yellow-400">Case Kanban</p>
         <h2 className="mt-4 text-5xl font-black">Investigation Workflow Board</h2>
 
@@ -1148,7 +1291,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="audit" className="relative z-10 mx-auto max-w-7xl px-6 py-20 md:px-14 xl:pr-[390px]">
+      <section id="audit" className="relative z-10 mx-auto max-w-7xl px-6 py-20 md:px-14">
         <div className="grid gap-8 lg:grid-cols-2">
           <div className={`rounded-[2rem] p-7 ${cardClass}`}>
             <p className="text-sm uppercase tracking-[0.3em] text-cyan-400">Audit Trail</p>
@@ -1187,7 +1330,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="relative z-10 mx-auto max-w-7xl px-6 py-20 md:px-14 xl:pr-[390px]">
+      <section className="relative z-10 mx-auto max-w-7xl px-6 py-20 md:px-14">
         <p className="text-sm uppercase tracking-[0.3em] text-orange-400">Transaction Monitoring</p>
         <h2 className="mt-4 text-5xl font-black">Suspicious Activity Queue</h2>
         <div className={`mt-10 overflow-x-auto rounded-[2rem] p-6 ${cardClass}`}>
@@ -1206,7 +1349,7 @@ export default function Home() {
       </section>
 
 
-      <section id="system-health" className="relative z-10 mx-auto max-w-7xl px-6 py-20 md:px-14 xl:pr-[390px]">
+      <section id="system-health" className="relative z-10 mx-auto max-w-7xl px-6 py-20 md:px-14">
         <p className="text-sm uppercase tracking-[0.3em] text-green-400">System Health Center</p>
         <h2 className="mt-4 text-5xl font-black">Enterprise Readiness Monitor</h2>
         <div className="mt-10 grid gap-5 md:grid-cols-4">
@@ -1220,7 +1363,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="relative z-10 mx-auto max-w-7xl px-6 py-20 md:px-14 xl:pr-[390px]">
+      <section className="relative z-10 mx-auto max-w-7xl px-6 py-20 md:px-14">
         <p className="text-sm uppercase tracking-[0.3em] text-cyan-400">Board Report Preview</p>
         <h2 className="mt-4 text-5xl font-black">Executive Storytelling Layer</h2>
         <div className={`mt-10 rounded-[2rem] p-8 ${cardClass}`}>
@@ -1244,7 +1387,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="case-study" className="relative z-10 mx-auto max-w-7xl px-6 py-20 md:px-14 xl:pr-[390px]">
+      <section id="case-study" className="relative z-10 mx-auto max-w-7xl px-6 py-20 md:px-14">
         <p className="text-sm uppercase tracking-[0.3em] text-purple-400">Portfolio Architecture</p>
         <h2 className="mt-4 text-5xl font-black">How This Product Is Built</h2>
         <div className="mt-10 grid gap-6 md:grid-cols-2">
@@ -1262,9 +1405,9 @@ export default function Home() {
         </div>
       </section>
 
-      <footer className="relative z-10 mx-auto max-w-7xl px-6 py-14 md:px-14 xl:pr-[390px]">
+      <footer className="relative z-10 mx-auto max-w-7xl px-6 py-14 md:px-14">
         <div className={`rounded-[2rem] p-8 text-center ${cardClass}`}>
-          <h3 className="text-4xl font-black text-cyan-400">Nexus360 V8</h3>
+          <h3 className="text-4xl font-black text-cyan-400">Nexus360</h3>
           <p className="mt-3 text-xl font-bold">Final Boss AI Powered Enterprise Intelligence Platform</p>
           <p className={`mt-6 ${muted}`}>Developed & Deployed By</p>
           <h4 className="mt-2 text-2xl font-black">Chetendra Singh Jadoun</h4>
@@ -1286,7 +1429,7 @@ export default function Home() {
             <div className="flex items-start justify-between gap-4">
               <div>
                 <p className="text-sm uppercase tracking-[0.3em] text-green-300">Hiring Manager View</p>
-                <h2 className="mt-3 text-5xl font-black">Why Nexus360 V8 deserves an interview</h2>
+                <h2 className="mt-3 text-5xl font-black">Why Nexus360 deserves an interview</h2>
                 <p className="mt-4 max-w-3xl text-slate-300">This project shows product thinking, analytics storytelling, CRM/AML understanding, interactive frontend engineering and executive-grade presentation.</p>
               </div>
               <button onClick={() => setShowRecruiterDeck(false)} className="rounded-full bg-white/10 px-4 py-2 font-bold">✕</button>
